@@ -5,7 +5,7 @@ class Sorting {
         // int[] arr = {1, 2, 3, 4, 5}; // already sorted
         // int[] arr = {5, 4, 3, 2, 1, 0}; // reverse sorted
         // int[] arr = {3, 3, 8, 5, 5, 2, 1, 7, 7}; // duplicate elements
-        int[] arr = {4, 2, 0, 5, 1, 3}; // random order
+        int[] arr = {7, 2, 9, 5, 6, 8, 3, 1, 0, 4}; // random order
 
         // int[] arr = {3, 3, 3, 3, 3, 3}; // edge case 1
         // int[] arr = {5, -1, 0, -3, 4}; // edge case 2
@@ -26,12 +26,12 @@ class Sorting {
         // QuickSort quick = new QuickSort();
         HeapSort heap = new HeapSort();
 
-        // arr = select.selectionSort(arr);
-        // arr = bubble.bubbleSort(arr);
-        // arr = insertion.insertionSort(arr);
-        // arr = merge.mergeSort(arr);
-        // arr = quick.quickSort(arr);
-        arr = heap.heapSort(arr);
+        // select.selectionSort(arr);
+        // bubble.bubbleSort(arr);
+        // insertion.insertionSort(arr);
+        // merge.mergeSort(arr);
+        // quick.quickSort(arr);
+        heap.heapSort(arr);
 
         for (int ind = 0; ind < arr.length; ind++) 
             System.out.print(arr[ind] + " ");

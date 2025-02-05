@@ -1,5 +1,5 @@
 public class HeapSort {
-    public int[] heapSort(int[] arr) {
+    public void heapSort(int[] arr) {
         int n = arr.length; // 4, 2, 0, 5, 1, 3
 
         // heapifying
@@ -16,7 +16,6 @@ public class HeapSort {
 
             maxHeapify(arr, ind, 0);
         }
-        return arr;
     }
     public void maxHeapify(int[] arr, int n, int i) {
         int largest = i;
