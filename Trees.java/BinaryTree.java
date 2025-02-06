@@ -14,9 +14,7 @@ public class BinaryTree {
             right = null;
         }
     }
-    BinaryTree() {
-        root = new Node();
-    }
+    
     BinaryTree(int val) {
         root = new Node(val);
     }
