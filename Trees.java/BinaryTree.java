@@ -20,12 +20,10 @@ public class BinaryTree {
     }
 
     public void insertLeft(Node r, int val) {
-        Node newNode = new Node(val);
-        r.left = newNode;
+        r.left = new Node(val);
     }
     public void insertRight(Node r, int val) {
-        Node newNode = new Node(val);
-        r.right = newNode;
+        r.right = new Node(val);
     }
 
     public void preOrder(Node r) {

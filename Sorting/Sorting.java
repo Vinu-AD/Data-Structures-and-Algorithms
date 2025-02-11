@@ -1,3 +1,6 @@
+// https://visualgo.net/en/sorting?slide=1
+// To visualize the code and algorithm with respect to our own values
+
 class Sorting {
 
     public static void main(String[] args) {
