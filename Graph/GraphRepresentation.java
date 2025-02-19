@@ -1,6 +1,7 @@
 
 public class GraphRepresentation {
     public static void main(String[] args) {
+        @SuppressWarnings("unused")
         int[][] graph = {
             {0, 1, 0, 1, 0},
             {0, 1, 0, 1, 0},
