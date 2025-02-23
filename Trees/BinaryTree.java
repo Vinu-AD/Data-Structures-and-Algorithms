@@ -4,10 +4,12 @@ public class BinaryTree {
         int data;
         Node left, right;
 
+        @SuppressWarnings("unused")
         Node() {
             left = null;
             right = null;
         }
+        @SuppressWarnings("unused")
         Node(int val) {
             data = val;
             left = null;

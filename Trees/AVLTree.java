@@ -1,110 +1,111 @@
 
-
-
 public class AVLTree {
-    Node root;
-    protected  class Node {
+    class Node {
         int data;
         Node left, right;
         int height;
-
+        
         Node(int val) {
             data = val;
             left = right = null;
             height = 0;
         }
     }
+    Node root;
 
     @SuppressWarnings("unused")
     AVLTree() {
         root = null;
     }
 
+    @SuppressWarnings("unused")
     AVLTree(int val) {
         root = new Node(val);
     }
 
     public void insert(int val) {
-        root = insert(root, val);
+        this.root = insert(root, val);
     }
-    public Node insert(Node node, int val) {
+
+    private  Node insert(Node node, int val) {
         if(node == null) 
             return new Node(val);
-        if(val < node.data) 
+        else if(node.data > val) 
             node.left = insert(node.left, val);
-        else if(val > node.data) 
+        else if(node.data < val) {
             node.right = insert(node.right, val);
-        
+        }
         node.height = 1 + max(getHeight(node.left), getHeight(node.right));
 
-        int balFactor = getBalanceFactor(node);
+        int balFactor = getHeight(node.left) - getHeight(node.right);
 
         // LL case
         if(balFactor > 1 && val < node.left.data) {
-            return rightRotate(node);
+            return rightRotation(node);
         }
+
         // LR case
-        if (balFactor > 1 && val > node.left.data) {
-            node.left = leftRotate(node.left);
-            return rightRotate(node);
+        if(balFactor > 1 && val > node.left.data) {
+            node.left = leftRotation(root.left);
+            return rightRotation(root);
         }
+
         // RR case
-        if(balFactor < -1 && val > node.right.data) {
-            return leftRotate(node);
+        if (balFactor < -1 && val > node.right.data) {
+            return leftRotation(root);
         }
+
         // RL case
-         if(balFactor < -1 && val < node.right.data) {
-            node.right = rightRotate(node.right);
-            return leftRotate(node);
+        if (balFactor < -1 && val < node.right.data) {
+            node.right = rightRotation(root.right);
+            return leftRotation(root);
         }
 
         return node;
     }
 
-    //   x < y < z 
-    private Node rightRotate(Node z) {
-        Node y = z.left;
-        Node subTree = y.right;
-        y.right = z;
-        z.left = subTree;
-
-        z.height = 1 + max(getHeight(z.left), getHeight(z.right));
-        y.height = 1 + max(getHeight(y.left), getHeight(y.right));
-
-        return y;
-    }
-
-    //   x < y < z 
-    private Node leftRotate(Node z) {
-        Node y = z.right;
-        Node subTree = y.left;
-        y.left = z;
-        z.right = subTree;
-
-        z.height = 1 + max(getHeight(z.left), getHeight(z.right));
-        y.height = 1 + max(getHeight(y.left), getHeight(y.right));
-
-        return y;
-    }
-
-    public int getBalanceFactor(Node root) {
+    private int getHeight(Node root) {
         if(root == null) return -1;
-        return getHeight(root.left) - getHeight(root.right);
+        return root.height;
     }
 
-    public int getHeight(Node node) {
-        if(node == null) return -1;
-        return node.height;
+    private Node rightRotation(Node root) {
+        Node leftNode = root.left;
+        Node subTree = leftNode.right;
+
+        leftNode.right = root;
+        root.left = subTree;
+
+        root.height = 1 + max(getHeight(root.left), getHeight(root.right));
+        leftNode.height = 1 + max(getHeight(leftNode.left), getHeight(leftNode.right)); 
+
+        return leftNode;
     }
 
-    public int max(int x, int y) {
+    private Node leftRotation(Node root) {
+        Node rightNode = root.right;
+        Node subTree = rightNode.left;
+
+        rightNode.left = root;
+        root.right = subTree;
+
+        root.height = 1 + max(getHeight(root.left), getHeight(root.right));
+        rightNode.height = 1 + max(getHeight(rightNode.left), getHeight(rightNode.right));
+
+        return rightNode;
+    }
+
+    private int max(int x, int y) {
         return x > y ? x : y;
     }
-    
-    public void inOrder(Node root) {
+
+    public void inOrder() {
+        inOrder(root);
+    }
+    private void inOrder(Node root) {
         if(root == null) return;
         inOrder(root.left);
-        System.out.println(root.data + " Height is " + root.height);
+        System.out.println("The height of the root " + root.data + " is " + root.height);
         inOrder(root.right);
     }
 }

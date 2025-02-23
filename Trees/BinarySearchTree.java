@@ -17,12 +17,13 @@ public class BinarySearchTree {
         root = null;
     }
 
+    @SuppressWarnings("unused")
     BinarySearchTree(int val) {
         root = new Node(val);
     }
 
     public void insert(int val) {
-        insert(root, val);
+        root = insert(root, val);
     }
 
     public Node insert(Node r, int val) {
@@ -30,17 +31,20 @@ public class BinarySearchTree {
             return new Node(val);
         if(val < r.data) 
             r.left = insert(r.left, val);
-        else 
+        else if(val > r.data)
             r.right = insert(r.right, val);
         return r;
         
     }
 
-    public void inOrder(Node r) {
-        if(r != null) {
-            inOrder(r.left);
-            System.err.print(r.data + " ");
-            inOrder(r.right);
+    public void inOrder() {
+        inOrder(root);
+    }
+    public void inOrder(Node root) {
+        if(root != null) {
+            inOrder(root.left);
+            System.out.print(root.data + " ");
+            inOrder(root.right);
         }
     }
 
@@ -53,7 +57,7 @@ public class BinarySearchTree {
     }
 
     public void delete(int val) {
-        delete(root, val);
+        root = delete(root, val);
     }
     
     public Node delete(Node root, int val) {
