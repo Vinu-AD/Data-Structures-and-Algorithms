@@ -10,7 +10,7 @@ public class GraphRepresentation {
             {0, 1, 0, 1, 0}
         }; // adjacency matrix
 
-        Graph g = new Graph(5);
+        Graph g = new Graph(5); // 5 - nummber of nodes
         g.addEdge(0, 1);
         g.addEdge(2, 3);
         g.addEdge(1, 2);

@@ -15,11 +15,13 @@ public class Graph {
 
     public void printAdjList() {
         for(int i = 0; i < adjList.size(); i++) {
-            System.out.print("\nVertex " + i + " Elements are: ");
+            System.out.print("Vertex " + i + " Elements are: ");
             for(int j = 0; j < adjList.get(i).size(); j++) {
                 System.out.print(adjList.get(i).get(j) + " ");
             }
-        }System.out.println();
+            System.out.println();
+        }
+        System.out.println();
     }
 
     public void bfs(int v) {
